@@ -505,8 +505,185 @@ input, textarea {
 }
 </style>
 
+<style>
+/* 3D Telegram Popup Styles */
+#telegramPopup {
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.65);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 999999;
+padding: 20px;
+}
+.popup-box {
+width: 100%;
+max-width: 380px;
+padding: 38px 28px 40px;
+border-radius: 40px;
+text-align: center;
+color: #fff;
+background: radial-gradient(circle at 30% 20%, #2b9cff, #0f5b9e 80%, #083b6b);
+box-shadow: 0 40px 70px rgba(0, 0, 0, 0.7), 0 15px 30px rgba(0, 0, 0, 0.5), inset 0 4px 12px rgba(255, 255, 255, 0.5), inset 0 -6px 18px rgba(0, 20, 40, 0.8), 0 0 0 2px rgba(255, 255, 255, 0.08) inset;
+transform: perspective(1200px) rotateX(6deg) rotateY(2deg) translateZ(10px);
+animation: popup3d 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+position: relative;
+overflow: hidden;
+}
+.popup-box:hover {
+transform: perspective(1200px) rotateX(3deg) rotateY(4deg) translateY(-6px) translateZ(16px);
+box-shadow: 0 60px 90px rgba(0, 0, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 4px 16px rgba(255, 255, 255, 0.6), inset 0 -8px 24px rgba(0, 20, 40, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.15) inset;
+}
+@keyframes popup3d {
+0% {
+opacity: 0;
+transform: perspective(1200px) rotateX(40deg) rotateY(10deg) scale(0.7) translateZ(-80px);
+filter: blur(8px);
+}
+100% {
+opacity: 1;
+transform: perspective(1200px) rotateX(6deg) rotateY(2deg) scale(1) translateZ(10px);
+filter: blur(0);
+}
+}
+.popup-box h2 {
+font-size: 26px;
+font-weight: 700;
+letter-spacing: -0.2px;
+margin-bottom: 14px;
+text-shadow: 0 6px 14px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+flex-wrap: wrap;
+font-family: inherit;
+}
+.popup-box .sub-icon {
+font-size: 34px;
+line-height: 1;
+filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+}
+.popup-box p {
+color: #e3f0ff;
+font-size: 17px;
+line-height: 1.6;
+font-weight: 400;
+margin: 10px 0 22px;
+text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+background: rgba(0, 30, 60, 0.2);
+backdrop-filter: blur(2px);
+border-radius: 40px;
+padding: 14px 16px;
+border: 1px solid rgba(255, 255, 255, 0.08);
+font-family: inherit;
+}
+.join-btn {
+display: inline-block;
+margin-top: 6px;
+padding: 16px 34px;
+background: linear-gradient(145deg, #ffffff, #e0ecff);
+color: #0066aa;
+font-weight: 700;
+font-size: 18px;
+text-decoration: none;
+border-radius: 60px;
+letter-spacing: 0.3px;
+border: none;
+cursor: pointer;
+box-shadow: 0 16px 28px -6px rgba(0, 0, 0, 0.6), 0 8px 16px -4px rgba(0, 0, 0, 0.4), inset 0 2px 8px rgba(255, 255, 255, 0.9), inset 0 -4px 12px rgba(0, 40, 80, 0.2);
+transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+font-family: inherit;
+}
+.join-btn:hover {
+transform: translateY(-5px) scale(1.03);
+box-shadow: 0 24px 40px -8px rgba(0, 0, 0, 0.7), 0 12px 24px -6px rgba(0, 0, 0, 0.5), inset 0 3px 12px rgba(255, 255, 255, 1), inset 0 -6px 16px rgba(0, 40, 80, 0.3);
+background: linear-gradient(145deg, #ffffff, #d4e6ff);
+color: #004a88;
+}
+.join-btn:active {
+transform: translateY(2px) scale(0.97);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.join-btn::before {
+content: "✈️ ";
+font-size: 22px;
+display: inline-block;
+margin-right: 8px;
+}
+.popup-close-btn {
+position: absolute;
+top: 14px;
+right: 18px;
+background: rgba(255, 255, 255, 0.15);
+border: none;
+color: #fff;
+font-size: 20px;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.2s;
+z-index: 10;
+}
+.popup-close-btn:hover {
+background: rgba(255, 255, 255, 0.3);
+}
+.popup-box::after {
+content: '';
+position: absolute;
+top: 8%;
+left: 10%;
+width: 40%;
+height: 20%;
+background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 80%);
+border-radius: 50%;
+filter: blur(6px);
+pointer-events: none;
+opacity: 0.6;
+}
+.popup-box::before {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: 40px;
+padding: 2px;
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.0) 70%);
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+pointer-events: none;
+}
+</style>
 </head>
 <body>
+
+<!-- 3D Telegram Popup Modal -->
+<div id="telegramPopup" onclick="if(event.target === this) this.style.display='none';">
+  <div class="popup-box">
+    <button class="popup-close-btn" onclick="document.getElementById('telegramPopup').style.display='none';" aria-label="Close">
+      &times;
+    </button>
+    <h2>
+      <span class="sub-icon">📱</span> JOIN TELEGRAM CHANNEL
+    </h2>
+    <p>
+      Get The New Pannel<br />
+    </p>
+    <a class="join-btn" href="https://t.me/TOXIC_ADMINN" target="_blank" onclick="document.getElementById('telegramPopup').style.display='none';">
+      ⚡ JOIN ⚡
+    </a>
+  </div>
+</div>
+
 
 <!-- BRANDING POPUP MODAL -->
 <div id="toxicModalOverlay" style="position:fixed;inset:0;background:rgba(2,6,12,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;">
