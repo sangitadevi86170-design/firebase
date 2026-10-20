@@ -489,8 +489,58 @@ body{color:var(--text);font-family:'Exo 2',sans-serif;-webkit-font-smoothing:ant
 /* DELETE ALL MSGS MODAL */
 #delAllMsgsModal .modal::before{background:linear-gradient(90deg,#ff2222,#ff6b00,#ff2222);background-size:200%;animation:shimmer 1.2s linear infinite;}
 </style>
+
+<style>
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+</style>
+
 </head>
 <body>
+
+<!-- BRANDING POPUP MODAL -->
+<div id="toxicModalOverlay" style="position:fixed;inset:0;background:rgba(2,6,12,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;">
+  <div style="background:linear-gradient(160deg,#0c1827,#070d15);border:1px solid rgba(0,212,255,0.3);box-shadow:0 0 50px rgba(0,212,255,0.25),0 20px 40px rgba(0,0,0,0.8);border-radius:24px;max-width:440px;width:100%;padding:32px 28px;text-align:center;position:relative;overflow:hidden;animation:fadeUp 0.5s ease-out;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00d4ff,#0088ff,#22e5ff);background-size:200%;animation:shimmer 2s linear infinite;"></div>
+    
+    <div style="width:72px;height:72px;margin:0 auto 18px;background:radial-gradient(circle,rgba(0,212,255,0.2),transparent 70%);border:1px solid rgba(0,212,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(0,212,255,0.4);">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.135l4.33 1.353 1.83 5.49a2.25 2.25 0 0 0 3.77.727l2.84-2.84 4.54 3.32a2.25 2.25 0 0 0 3.51-1.39l3-16.5a2.25 2.25 0 0 0-2.424-2.61z"/>
+      </svg>
+    </div>
+
+    <h2 style="font-size:22px;font-weight:900;letter-spacing:-0.3px;color:#d4eef5;margin-bottom:8px;font-family:'Exo 2',sans-serif;">
+      TOXIC <span style="background:linear-gradient(90deg,#00d4ff,#22e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">ADMINN</span>
+    </h2>
+    <p style="font-size:13px;color:#3a6a8a;line-height:1.6;margin-bottom:24px;font-family:'Exo 2',sans-serif;">
+      Welcome to the official panel. Join our Telegram channel to stay updated, get announcements, and unlock the web tool.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="https://t.me/TOXIC_ADMINN" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#22e5ff,#0088ff);color:#020810;font-weight:800;font-size:14px;text-decoration:none;letter-spacing:0.4px;box-shadow:0 8px 25px rgba(0,212,255,0.4);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+        📢 Join Telegram Channel
+      </a>
+
+      <button type="button" onclick="document.getElementById('toxicModalOverlay').style.display='none'" style="padding:13px 20px;border-radius:14px;background:rgba(16,28,46,0.85);border:1px solid rgba(0,212,255,0.2);color:#00d4ff;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(0,212,255,0.5)';this.style.background='rgba(0,212,255,0.1)'" onmouseout="this.style.borderColor='rgba(0,212,255,0.2)';this.style.background='rgba(16,28,46,0.85)'">
+        🚀 Continue to Web Panel →
+      </button>
+    </div>
+  </div>
+</div>
+
 
 <div id="otpBar"><div class="otp-lbl">OTP</div><div class="otp-num" id="otpNum" onclick="otpCopy()">──────</div><div class="otp-src" id="otpSrc"></div><button class="otp-cpbtn" onclick="otpCopy()">Copy</button><button class="otp-x" onclick="otpDismiss()">✕</button></div>
 
@@ -867,5 +917,45 @@ body{color:var(--text);font-family:'Exo 2',sans-serif;-webkit-font-smoothing:ant
   }
 })();
 </script>
+
+<script>
+// Disable Right Click
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable Inspect / View Source Keyboard Shortcuts
+document.addEventListener('keydown', function(e) {
+  // F12
+  if (e.keyCode === 123) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C (DevTools)
+  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+U (View Source)
+  if (e.ctrlKey && e.keyCode === 85) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+S (Save Page)
+  if (e.ctrlKey && e.keyCode === 83) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// Disable Text Drag & Selection
+document.addEventListener('selectstart', function(e) {
+  if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+  }
+});
+</script>
+
 </body>
 </html>
