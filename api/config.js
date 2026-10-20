@@ -1,18 +1,20 @@
+// Secure config endpoint that returns ZERO database URLs to browser
 export default function handler(req, res) {
-  // Return firebase urls from environment variable
+  res.setHeader('Cache-Control', 'no-store, max-age=0');
   try {
     const raw = process.env.FIREBASE_URLS;
-    let urls = [];
+    let count = 0;
     if (raw) {
       try {
-        urls = typeof raw === 'string' && raw.trim().startsWith('[') ? JSON.parse(raw) : raw.split(',').map(s => s.trim()).filter(Boolean);
+        const parsed = typeof raw === 'string' && raw.trim().startsWith('[') ? JSON.parse(raw) : raw.split(',');
+        count = Array.isArray(parsed) ? parsed.length : 1;
       } catch (e) {
-        urls = [raw];
+        count = 1;
       }
     }
-    res.setHeader('Cache-Control', 'no-store, max-age=0');
-    return res.status(200).json({ urls });
+    // Return count and status only, NEVER return raw URLs!
+    return res.status(200).json({ status: 'ok', count: count });
   } catch (err) {
-    return res.status(500).json({ urls: [], error: 'Failed to read config' });
+    return res.status(500).json({ status: 'error' });
   }
 }
